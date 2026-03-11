@@ -1,22 +1,23 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from data import my_name, name, password, wrong_password, BASE_URL
+from data import Urls,UserData
 from locators import (
     EMAIL_BUTTON, 
     REGISTRATION_BUTTON, 
     PASSWORD_BUTTON, 
     MY_ACCOUNT, 
     NAME_BUTTON, 
-    EMAIL_BUTTON_LOGIN
+    EMAIL_BUTTON_LOGIN,
+    LINK_REGISTRATION,
+    INCORRECT_PASSWORD
 )
-import random
 
 class TestRegistration:
 
     def test_valid_registration(self, driver):
 
-        driver.get(BASE_URL)
+        driver.get(Urls.BASE_URL)
 
         wait = WebDriverWait(driver, 10)
 
@@ -26,17 +27,17 @@ class TestRegistration:
         ).click()
 
         wait.until(
-            EC.element_to_be_clickable((By.LINK_TEXT, "Зарегистрироваться"))
+            EC.element_to_be_clickable(LINK_REGISTRATION)
         ).click()
 
         wait.until(
             EC.visibility_of_element_located(NAME_BUTTON)
         )
 
-        # ошибка для некорректного пароля
-        driver.find_element(*NAME_BUTTON).send_keys(my_name)
-        driver.find_element(*EMAIL_BUTTON).send_keys(name)
-        driver.find_element(*PASSWORD_BUTTON).send_keys(password)
+        
+        driver.find_element(*NAME_BUTTON).send_keys(UserData.name)
+        driver.find_element(*EMAIL_BUTTON).send_keys(UserData.email)
+        driver.find_element(*PASSWORD_BUTTON).send_keys(UserData.password)
         driver.find_element(*REGISTRATION_BUTTON).click()
 
         assert wait.until(
@@ -45,7 +46,7 @@ class TestRegistration:
 
     def test_registration_with_wrong_password(self, driver):
 
-        driver.get(BASE_URL)
+        driver.get(Urls.BASE_URL)
 
         wait = WebDriverWait(driver, 10)
 
@@ -54,7 +55,7 @@ class TestRegistration:
         ).click()
 
         wait.until(
-            EC.element_to_be_clickable((By.LINK_TEXT, "Зарегистрироваться"))
+            EC.element_to_be_clickable(LINK_REGISTRATION)
         ).click()
 
         wait.until(
@@ -62,18 +63,18 @@ class TestRegistration:
         
 
         driver.find_element(*NAME_BUTTON).clear()
-        driver.find_element(*NAME_BUTTON).send_keys(my_name)
+        driver.find_element(*NAME_BUTTON).send_keys(UserData.name)
 
         driver.find_element(*EMAIL_BUTTON).clear()
-        driver.find_element(*EMAIL_BUTTON).send_keys(name)
+        driver.find_element(*EMAIL_BUTTON).send_keys(UserData.email)
 
         driver.find_element(*PASSWORD_BUTTON).clear()
-        driver.find_element(*PASSWORD_BUTTON).send_keys(wrong_password)
+        driver.find_element(*PASSWORD_BUTTON).send_keys(UserData.wrong_password)
 
         driver.find_element(*REGISTRATION_BUTTON).click()
         
         assert wait.until(
-            EC.visibility_of_element_located((By.XPATH, "//p[text()='Некорректный пароль']"))
+            EC.visibility_of_element_located(INCORRECT_PASSWORD)
         )
         
         

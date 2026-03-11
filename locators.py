@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-import random
+
 
 
 # Поле ввода имени при регистрации
@@ -55,3 +55,7 @@ REGISTRATION = (By.XPATH, "//a[text()='Зарегистрироваться']") 
 # Кнопка "Войти" в форме регистрации
 LOD_IN = (By.XPATH, "//a[text()= 'Войти']")  # Переход из формы регистрации обратно в форму входа
 
+LINK_REGISTRATION = (By.LINK_TEXT, "Зарегистрироваться")
+
+#Некорректный пароль
+INCORRECT_PASSWORD = (By.XPATH, "//p[text()='Некорректный пароль']")

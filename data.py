@@ -1,14 +1,20 @@
 import random
 
 
-#Ссылка URL
-BASE_URL = "https://stellarburgers.education-services.ru/"
+
+class Urls:
+    BASE_URL = "https://stellarburgers.education-services.ru/"
 
 
-my_name = f"Alinarakhimiyanova42{random.randint(100, 999)}"
+class UserData:
 
-name = f"{my_name}@example.com"
+    name = f"Alinarakhimiyanova42{random.randint(100, 999)}"
 
-password = f'a{random.randint(100000,999999)}'
+    email = f"{name}@example.com"
 
-wrong_password = "12"
+    password = f'a{random.randint(100000,999999)}'
+
+    wrong_password = "12"
+
+
+

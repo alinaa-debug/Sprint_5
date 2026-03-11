@@ -2,7 +2,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from data import BASE_URL
+from data import Urls,UserData
 from locators import (
     IMG_SAUCE_SPICY_X,
     IMG_FILLING,
@@ -11,7 +11,7 @@ from locators import (
 class TestConstructor:
     # Соусы
     def test_open_sauces(self, driver):
-        driver.get(BASE_URL)
+        driver.get(Urls.BASE_URL)
         wait = WebDriverWait(driver, 3)
    
         sauce_button = wait.until(
@@ -22,7 +22,7 @@ class TestConstructor:
 
 # Начинки
     def test_open_filling(self,driver):
-        driver.get(BASE_URL)
+        driver.get(Urls.BASE_URL)
         wait = WebDriverWait(driver,3)
 
         filling_button = wait.until(
@@ -34,8 +34,10 @@ class TestConstructor:
 
 # Булки
     def test_open_bulki(self,driver):
-        driver.get(BASE_URL)
+        driver.get(Urls.BASE_URL)
         wait = WebDriverWait(driver,3)
+        driver.find_element(*IMG_SAUCE_SPICY_X).click()
+        
         bulki_button = wait.until(
         EC.element_to_be_clickable(IMG_BULKI)
         )
