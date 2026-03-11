@@ -30,7 +30,7 @@ def registered_user(driver):
     wait = WebDriverWait(driver, 10)
 
     driver.get(BASE_URL)
-    my_name_test_lodin = "Alina42"
+    my_name_test_lodin = "Alina4"
 
     name_for_test_lodin = f"{my_name_test_lodin}@gmail.com"
 
