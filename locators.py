@@ -1,13 +1,11 @@
 from selenium.webdriver.common.by import By
 import random
 
-#Ссылка URL
-BASE_URL = "https://stellarburgers.education-services.ru/"
 
 # Поле ввода имени при регистрации
 NAME_BUTTON = (By.XPATH, "(//input[@type='text'])[1]") # Ввод имени пользователя
 
-# Поле ввода email при регистрации или входе
+# Поле ввода email при регистрации 
 EMAIL_BUTTON = (By.XPATH, "(//input[@type='text'])[2]")  # Ввод Email
 
 # Поле ввода email при входе
@@ -34,6 +32,26 @@ LOGOUT_BUTTON = (By.XPATH, "//button[text()='Выход']")  # Нажатие к
 # Ссылка на личный кабинет пользователя
 MY_ACCOUNT = (By.XPATH, "//p[text()='Личный Кабинет']")  # Переход в раздел "Личный Кабинет"
 
-LOGO_Stellar_Burgers = (By.XPATH, "//a[@class='active']")
+# Логотип Stellar Burgers
+LOGO_Stellar_Burgers = (By.XPATH, "//a[@class='active']")  # Переход на главную страницу по клику на логотип
 
-LOGIN_ACCOUNT_BUTTON = (By.XPATH, "//button[text()='Войти в аккаунт']")
+# Кнопка "Войти в аккаунт" на главной странице
+LOGIN_ACCOUNT_BUTTON = (By.XPATH, "//button[text()='Войти в аккаунт']")  # Открытие формы входа
+
+# Категории ингредиентов на странице конструктора
+IMG_SAUCE_SPICY_X = (By.XPATH, "//span[text()='Соусы']/..")  # Выбор раздела "Соусы"
+IMG_FILLING = (By.XPATH, "//span[text()='Начинки']/..")      # Выбор раздела "Начинки"
+IMG_BULKI = (By.XPATH, "//span[text()='Булки']/..")          # Выбор раздела "Булки"
+
+# Ссылка для восстановления пароля
+RECOVER_PASSWORD = (By.XPATH, "//a[text()='Восстановить пароль']")  # Переход в форму восстановления пароля
+
+# Кнопка "Войти" в форме восстановления пароля
+LODIN_IN_RECOVERY = (By.XPATH,"//a[text()='Войти']")  # Вход через форму восстановления пароля
+
+# Ссылка "Зарегистрироваться" в форме входа
+REGISTRATION = (By.XPATH, "//a[text()='Зарегистрироваться']")  # Переход в форму регистрации
+
+# Кнопка "Войти" в форме регистрации
+LOD_IN = (By.XPATH, "//a[text()= 'Войти']")  # Переход из формы регистрации обратно в форму входа
+
