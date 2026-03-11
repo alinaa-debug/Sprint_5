@@ -14,7 +14,6 @@ EMAIL_BUTTON_LOGIN,
 PASSWORD_BUTTON_LOGIN,
 LOGIN_BUTTON,
 LINK_REGISTRATION)
-import random
 
 @pytest.fixture
 def driver():
