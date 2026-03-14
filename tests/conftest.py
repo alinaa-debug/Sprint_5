@@ -1,9 +1,11 @@
 import pytest
+import random
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from data import Urls,UserData
+
+from data import Urls
 from locators import (MY_ACCOUNT,
 NAME_BUTTON,
 EMAIL_BUTTON,
@@ -30,6 +32,9 @@ def registered_user(driver):
 
     driver.get(Urls.BASE_URL)
 
+    name = f"Alina{random.randint(100,999)}"
+    email = f"{name}@example.com"
+    password = f'a{random.randint(100000,999999)}'
 
     wait.until(EC.element_to_be_clickable(MY_ACCOUNT)).click()
 
@@ -37,15 +42,15 @@ def registered_user(driver):
         EC.element_to_be_clickable(LINK_REGISTRATION)
     ).click()
 
-    driver.find_element(*NAME_BUTTON).send_keys(UserData.name)
-    driver.find_element(*EMAIL_BUTTON).send_keys(UserData.email)
-    driver.find_element(*PASSWORD_BUTTON).send_keys(UserData.password)
+    driver.find_element(*NAME_BUTTON).send_keys(name)
+    driver.find_element(*EMAIL_BUTTON).send_keys(email)
+    driver.find_element(*PASSWORD_BUTTON).send_keys(password)
 
     driver.find_element(*REGISTRATION_BUTTON).click()
     wait.until(
         EC.visibility_of_element_located(EMAIL_BUTTON_LOGIN))
     
-    return UserData.email, UserData.password
+    return email, password
 
 
 @pytest.fixture

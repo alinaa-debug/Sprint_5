@@ -1,15 +1,14 @@
 
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from data import Urls,UserData
+from data import Urls
 from locators import (
     IMG_SAUCE_SPICY_X,
     IMG_FILLING,
     IMG_BULKI)
 
 class TestConstructor:
-    # Соусы
+    # Соусы.
     def test_open_sauces(self, driver):
         driver.get(Urls.BASE_URL)
         wait = WebDriverWait(driver, 3)

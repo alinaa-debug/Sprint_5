@@ -1,5 +1,4 @@
 
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from locators import (MY_ACCOUNT, 
@@ -9,7 +8,7 @@ MAIN_PAGE_TITLE,
 EMAIL_BUTTON_LOGIN)
 
 class TestNavigation:
-    # Проверяем, что личный кабинет открылся
+    # Проверяем, что личный кабинет открылся..
     def test_go_to_personal_account(self, logged_in_user):
         wait = WebDriverWait(logged_in_user, 10)
 
